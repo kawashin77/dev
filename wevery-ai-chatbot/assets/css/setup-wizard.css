@@ -1,0 +1,166 @@
+/* --- 既存のCSS (オーバーレイ、モーダル、ヘッダーなど) はそのまま --- */
+
+#wacb-wizard-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wacb-wizard-modal {
+    background: #fff;
+    width: 600px;
+    max-width: 90%;
+    max-height: 90vh; /* 画面内に収める */
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.wacb-wizard-header {
+    background: #f0f0f1;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    flex-shrink: 0; /* ヘッダー縮小禁止 */
+}
+.wacb-wizard-header h2 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #1d2327;
+}
+.wacb-wizard-header p {
+    margin: 0;
+    color: #646970;
+    font-size: 14px;
+}
+
+.wacb-wizard-step {
+    padding: 30px;
+    flex-grow: 1;
+    overflow-y: auto; /* 中身が多い場合はスクロール */
+}
+.wacb-wizard-step h3 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* ★★★ 追加: 動画コンテナのスタイル (レスポンシブ対応) ★★★ */
+.wacb-video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 の比率 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.wacb-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ★ 追加: チェックボックスエリアのスタイル */
+#wacb-specialty-checkboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2列表示 */
+    gap: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+    background: #fafafa;
+    max-height: 300px; /* 多すぎる場合はここもスクロール */
+    overflow-y: auto;
+}
+/* スマホなど画面が狭いときは1列にする */
+@media (max-width: 500px) {
+    #wacb-specialty-checkboxes {
+        grid-template-columns: 1fr;
+    }
+}
+
+.wacb-checkbox-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background 0.2s;
+}
+.wacb-checkbox-item:hover {
+    background: #f0f0f1;
+}
+.wacb-checkbox-item input {
+    margin-right: 8px;
+    transform: scale(1.2); /* チェックボックスを少し大きく */
+}
+
+
+/* 入力フィールド */
+#wacb-answer-input {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* プログレスバー */
+.wacb-progress-text {
+    text-align: right;
+    font-weight: bold;
+    color: #0073aa;
+    margin-bottom: 5px;
+}
+.wacb-progress-bar {
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+#wacb-progress-fill {
+    height: 100%;
+    background: #0073aa;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* ナビゲーションボタン */
+.wacb-wizard-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+/* 閉じるボタン */
+#wacb-wizard-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+}
+#wacb-wizard-close:hover {
+    color: #d63638;
+}
